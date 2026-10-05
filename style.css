@@ -1,0 +1,105 @@
+
+/* ---------- General ---------- */
+html { scroll-behavior: smooth; }
+section[id], header[id] { scroll-margin-top: 56px; } /* sticky navbar does not cover headings */
+
+.hero {
+  background:
+    linear-gradient(rgba(0, 0, 0, .55), rgba(0, 0, 0, .55)),
+    url("https://picsum.photos/seed/tengri-hero/1600/900") center / cover no-repeat;
+}
+
+/* ============================================================
+   TASK 1 - "Why Choose Us" section (#features)
+   Own CSS only: Grid + Flexbox, @media (min-width), mobile-first.
+   ============================================================ */
+
+/* ---- BASE (phone, < 768px) ---- */
+.feat {
+  padding: 32px 16px;
+  background: #fff8ee;
+}
+
+.feat-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feat-title {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 0 24px;
+}
+
+.feat-list {
+  display: grid;
+  grid-template-columns: 1fr;      /* 1 item per row */
+  gap: 16px;
+}
+
+.feat-item {
+  display: flex;
+  flex-direction: column;          /* image on top */
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.feat-img {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.feat-text h3 { font-size: 1.1rem; margin: 0 0 8px; }
+.feat-text p  { margin: 0; color: #555; }
+
+/* ---- TABLET (>= 768px): 2 columns, image on the left ---- */
+@media (min-width: 768px) {
+  .feat { padding: 48px 32px; }
+
+  .feat-title {
+    font-size: 2rem;
+    margin-bottom: 32px;
+  }
+
+  .feat-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .feat-item {
+    flex-direction: row;           /* image to the left of the text */
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .feat-img { margin-bottom: 0; flex-shrink: 0; }
+}
+
+/* ---- LAPTOP (>= 1024px): 3 columns, image on top again and bigger ---- */
+@media (min-width: 1024px) {
+  .feat { padding: 72px 48px; }
+
+  .feat-title { font-size: 2.5rem; margin-bottom: 48px; }
+
+  .feat-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .feat-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 28px;
+  }
+
+  .feat-img { width: 120px; height: 120px; margin-bottom: 16px; }
+}
